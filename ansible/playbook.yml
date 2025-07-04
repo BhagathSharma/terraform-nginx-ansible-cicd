@@ -1,0 +1,38 @@
+---
+- name: Configure EC2 to run Dockerized Web App
+  hosts: web
+  become: true
+  vars:
+    docker_image: "ghcr.io/bhagathsharma/terraform-nginx-ansible-cicd:main"
+
+  tasks:
+    - name: Install required system packages
+      package:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - docker
+        - git
+        - python3
+        - python3-pip
+
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Add ec2-user to docker group
+      user:
+        name: ec2-user
+        groups: docker
+        append: yes
+
+    - name: Stop any existing Docker container
+      shell: docker rm -f nginx-web || true
+
+    - name: Pull Docker image
+      shell: docker pull "{{ docker_image }}"
+
+    - name: Run Docker container
+      shell: docker run -d --name nginx-web --restart always -p 80:80 "{{ docker_image }}"

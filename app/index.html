@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚀 Deployed with Ansible!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(0.9);
+          opacity: 0.7;
+        }
+        100% {
+          transform: scale(1.4);
+          opacity: 0;
+        }
+      }
+
+      .pulse-ring {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 9999px;
+        background-color: rgba(255, 255, 255, 0.2);
+        animation: pulse-ring 2s infinite;
+      }
+
+      .glow {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      }
+
+      .neon {
+        text-shadow: 0 0 5px #fff, 0 0 10px #38bdf8, 0 0 15px #38bdf8,
+          0 0 20px #0ea5e9;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-gray-900 via-sky-900 to-indigo-900 text-white min-h-screen flex items-center justify-center"
+  >
+    <div class="text-center relative px-4 py-16">
+      <div
+        class="pulse-ring top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      ></div>
+
+      <h1
+        class="text-5xl sm:text-6xl md:text-7xl font-bold neon mb-6 animate-bounce"
+      >
+        🚀 Hello from EC2!
+      </h1>
+
+      <p
+        class="text-xl sm:text-2xl text-slate-200 max-w-xl mx-auto mb-6 animate-fadeInUp"
+      >
+        This site was deployed using
+        <span class="text-cyan-400 font-semibold"
+          >Terraform + Ansible + GitHub Actions</span
+        >
+        and is served from a Docker container powered by NGINX.
+      </p>
+
+      <a
+        href="https://github.com/BhagathSharma/terraform-nginx-ansible-cicd"
+        target="_blank"
+        class="mt-6 inline-block px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white font-medium rounded-full transition transform hover:scale-105 glow"
+      >
+        🌐 View Source
+      </a>
+    </div>
+
+    <script>
+      // Animate fadeInUp on load
+      document.querySelectorAll(".animate-fadeInUp").forEach((el, i) => {
+        el.style.opacity = 0;
+        el.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          el.style.transition = "all 0.7s ease-out";
+          el.style.opacity = 1;
+          el.style.transform = "translateY(0)";
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
