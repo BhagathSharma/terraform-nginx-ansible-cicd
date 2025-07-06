@@ -184,4 +184,9 @@ This project is open-source and licensed for educational or production use. You 
 
 ## Authors
 
+* Bhagath Sharma Bhadra Kumar Suma Devi
+* Chiranth chirayil
+* Alby Mareena Varghese
+
+
 Developed as part of a DevOps pipeline demonstration combining Terraform, Ansible, Docker, and GitHub Actions for full-stack automation.
